@@ -1,21 +1,23 @@
 {
-  "name": "vuejs-datepicker",
+  "name": "@voidgraphics/vue2-date-time-picker",
   "version": "0.9.29",
-  "description": "A simple Vue.js datepicker component. Supports disabling of dates, inline mode, translations",
+  "description": "A simple Vue.js datetime picker component. Supports disabling of dates, inline mode, translations",
   "keywords": [
     "vue",
     "datepicker",
+    "datetimepicker",
+    "datetime-picker",
     "date-picker",
     "calendar"
   ],
   "main": "dist/build.js",
-  "author": "Charlie Kassel <ck@charliekassel.com>",
+  "author": "Adrien Leloup <adrien@whitecube.be>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/charliekassel/vuejs-datepicker"
+    "url": "https://github.com/voidgraphics/vuejs-datepicker"
   },
   "bugs": {
-    "url": "https://github.com/charliekassel/vuejs-datepicker/issues"
+    "url": "https://github.com/voidgraphics/vuejs-datepicker/issues"
   },
   "private": false,
   "license": "MIT",
