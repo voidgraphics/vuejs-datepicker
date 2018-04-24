@@ -4,6 +4,14 @@
     <h1>Datepicker Examples</h1>
 
     <div class="example">
+      <h3>Datetime picker</h3>
+      <datepicker datetime format="dsu MMMM yyyy - hh:mm" placeholder="Select Date and time" wrapper-class="my-datapicker"/>
+      <code>
+          &lt;datepicker datetime placeholder="Select Date and time"&gt;&lt;/datepicker&gt;
+      </code>
+    </div>
+
+    <div class="example">
       <h3>Default datepicker</h3>
       <datepicker placeholder="Select Date" wrapper-class="my-datapicker"/>
       <code>

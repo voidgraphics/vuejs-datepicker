@@ -58,6 +58,18 @@
                 v-bind:class="dayClasses(day)"
                 @click="selectDate(day)">{{ day.date }}</span>
           </div>
+        <div class="vdp-datepicker__timepicker" v-if="datetime">
+          <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--hours">
+            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click="selectHours(parseInt(hours) + 1)">+</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click="selectHours(parseInt(hours) - 1)">-</button>
+            <input class="vdp-datepicker__time" type="text" v-model="hours">
+          </div>
+          <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--minutes">
+            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click="selectMinutes(parseInt(minutes) + 1)">+</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click="selectMinutes(parseInt(minutes) - 1)">-</button>
+            <input class="vdp-datepicker__time" type="text" v-model="minutes">
+          </div>
+        </div>
       </div>
     </template>
 
@@ -138,6 +150,7 @@ export default {
     highlighted: Object,
     placeholder: String,
     inline: Boolean,
+    datetime: Boolean,
     calendarClass: [String, Object],
     inputClass: [String, Object],
     wrapperClass: [String, Object],
@@ -174,6 +187,8 @@ export default {
        * {Date}
        */
       selectedDate: null,
+      hours: '00',
+      minutes: '00',
       /*
        * Flags to show calendar views
        * {Boolean}
@@ -433,6 +448,7 @@ export default {
         this.$emit('selectedDisabled', day)
         return false
       }
+
       this.setDate(day.timestamp)
       if (!this.isInline) {
         this.close(true)
@@ -477,6 +493,37 @@ export default {
           this.close(true)
         }
       }
+    },
+    /**
+     * @param {Int} hours
+     */
+    selectHours (hours) {
+      if (hours === -1) hours = 23
+      else if (hours === 24) hours = 0
+      this.hours = this.appendZero(hours)
+      let date = new Date(this.selectedDate)
+      date.setHours(this.hours)
+      date.setMinutes(this.minutes)
+      this.setDate(date)
+    },
+    /**
+     * @param {Int} minutes
+     */
+    selectMinutes (minutes) {
+      if (minutes === -1) minutes = 59
+      else if (minutes === 60) minutes = 0
+      this.minutes = this.appendZero(minutes)
+      let date = new Date(this.selectedDate)
+      date.setHours(this.hours)
+      date.setMinutes(this.minutes)
+      this.setDate(date)
+    },
+    /**
+     * @return {String}
+     */
+    appendZero (number) {
+      if (number < 10) return '0' + number
+      else return '' + number
     },
     /**
      * @return {Number}
@@ -938,6 +985,7 @@ $width = 300px
         text-align center
         vertical-align middle
         border 1px solid transparent
+        
         &:not(.blank):not(.disabled).day
         &:not(.blank):not(.disabled).month
         &:not(.blank):not(.disabled).year
@@ -979,4 +1027,80 @@ $width = 300px
     &.disabled
       color #999
       cursor default
+
+.vdp-datepicker__timepicker
+    margin-top 10px
+    padding-top 25px
+    height 95px
+    border-top 1px solid #f2f2f2
+    display flex
+
+.vdp-datepicker__timeunit
+    width 50%
+    text-align center
+    position relative
+
+    &--hours
+      text-align right
+
+      .vdp-datepicker__control
+        right 0
+        text-align center
+        padding 0
+        left auto
+
+      .vdp-datepicker__time
+          text-align right
+
+    &--minutes
+        text-align left
+
+        .vdp-datepicker__control
+          left 0
+          text-align center
+          padding 0
+          right auto
+
+        .vdp-datepicker__time
+            text-align left
+
+        &:before
+            content ':'
+            display block
+            font-size 1.5em
+            font-weight bold
+            margin-top 7px
+            position absolute
+            left -4px
+
+.vdp-datepicker__control
+    position absolute
+    background transparent
+    border none
+    width 44px
+    left 0
+    right 0
+    margin auto
+    font-weight bold
+    font-size 1.2em
+
+    &:focus
+        outline none
+
+    &--plus
+        top -17px
+    &--minus
+        bottom 8px
+
+.vdp-datepicker__time
+    font-size 1.5em
+    margin-top 8px
+    display inline-block
+    font-weight bold
+    padding 0 10px
+    width 50px
+    border none
+
+    &:focus
+        outline none
 </style>

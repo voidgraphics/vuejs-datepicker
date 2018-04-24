@@ -108,6 +108,8 @@ export default {
     let year = date.getFullYear()
     let month = date.getMonth() + 1
     let day = date.getDate()
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
     let str = format
       .replace(/dd/, ('0' + day).slice(-2))
       .replace(/d/, day)
@@ -119,7 +121,19 @@ export default {
       .replace(/M(?!a|ä|e)/, month)
       .replace(/su/, this.getNthSuffix(date.getDate()))
       .replace(/D(?!e|é|i)/, this.getDayNameAbbr(date, translation.days))
+      .replace(/hh/, this.addZero(hours))
+      .replace(/mm/, this.addZero(minutes))
     return str
+  },
+
+  /**
+   * Appends a zero if number is less than 10
+   * @param {Int} number
+   * @return {String}
+   */
+  addZero (number) {
+    if (number < 10) return '0' + number
+    else return '' + number
   },
 
   /**
