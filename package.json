@@ -1,6 +1,6 @@
 {
   "name": "@voidgraphics/vue2-date-time-picker",
-  "version": "0.9.29",
+  "version": "0.0.2",
   "description": "A simple Vue.js datetime picker component. Supports disabling of dates, inline mode, translations",
   "keywords": [
     "vue",
