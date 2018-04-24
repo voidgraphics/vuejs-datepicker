@@ -74,6 +74,7 @@ Inline always open version
 | name                          | String          |             | Input name property                      |
 | id                            | String          |             | Input id                                 |
 | format                        | String\|Function| dd MMM yyyy | Date formatting string or function       |
+| datetime                      | Boolean         | false       | Adds a time picker                       |
 | full-month-name               | Boolean         | false       | To show the full month name              |
 | language                      | String          | en          | Translation for days and months          |
 | disabled                      | Object          |             | See below for configuration              |
@@ -132,6 +133,8 @@ NB. This is not very robust at all - use at your own risk! Needs a better implem
 | MMMM  | month name             | January     |
 | yy    | two digit year         | 16          |
 | yyyy  | four digit year        | 2016        |
+| hh    | two digit hours        | 08          |
+| mm    | two digit minutes      | 56          |
 
 #### Function formatter
 
