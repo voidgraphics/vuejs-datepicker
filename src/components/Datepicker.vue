@@ -60,13 +60,13 @@
           </div>
         <div class="vdp-datepicker__timepicker" v-if="datetime">
           <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--hours">
-            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click="selectHours(parseInt(hours) + 1)">+</button>
-            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click="selectHours(parseInt(hours) - 1)">-</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click.prevent="selectHours(parseInt(hours) + 1)">+</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click.prevent="selectHours(parseInt(hours) - 1)">-</button>
             <input class="vdp-datepicker__time" type="text" v-model="hours" @keyup="selectHours(parseInt(minutes))">
           </div>
           <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--minutes">
-            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click="selectMinutes(parseInt(minutes) + 1)">+</button>
-            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click="selectMinutes(parseInt(minutes) - 1)">-</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click.prevent="selectMinutes(parseInt(minutes) + 1)">+</button>
+            <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click.prevent="selectMinutes(parseInt(minutes) - 1)">-</button>
             <input class="vdp-datepicker__time" type="text" v-model="minutes" @keyup="selectMinutes(parseInt(minutes))">
           </div>
         </div>
