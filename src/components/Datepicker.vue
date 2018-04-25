@@ -450,6 +450,8 @@ export default {
       }
 
       this.setDate(day.timestamp)
+      this.selectHours(0)
+      this.selectMinutes(0)
       if (!this.isInline && !this.datetime) {
         this.close(true)
       }
