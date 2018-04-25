@@ -62,7 +62,7 @@
           <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--hours">
             <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click.prevent="selectHours(parseInt(hours) + 1)">+</button>
             <button class="vdp-datepicker__control vdp-datepicker__control--minus" @click.prevent="selectHours(parseInt(hours) - 1)">-</button>
-            <input class="vdp-datepicker__time" type="text" v-model="hours" @blur="selectHours(parseInt(minutes))">
+            <input class="vdp-datepicker__time" type="text" v-model="hours" @blur="selectHours(parseInt(hours))">
           </div>
           <div class="vdp-datepicker__timeunit vdp-datepicker__timeunit--minutes">
             <button class="vdp-datepicker__control vdp-datepicker__control--plus" @click.prevent="selectMinutes(parseInt(minutes) + 1)">+</button>
@@ -500,12 +500,14 @@ export default {
      * @param {Int} hours
      */
     selectHours (hours) {
-      if (hours === -1) hours = 23
-      else if (hours === 24) hours = 0
+      console.log(hours)
+      if (hours <= -1) hours = 23
+      else if (hours >= 24) hours = 0
       this.hours = this.appendZero(hours)
       let date = new Date(this.selectedDate)
       date.setHours(this.hours)
       date.setMinutes(this.minutes)
+      console.log(date)
       this.setDate(date)
     },
     /**
